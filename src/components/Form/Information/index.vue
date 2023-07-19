@@ -1,3 +1,20 @@
+<template>
+    <article class="information">
+        <img src="@/assets/images/user-photo.png" alt="user-photo">
+        <div class="information-list">
+            <p class="information-item">Business Account</p>
+            <p class="information-item -name">Sarah Bills</p>
+        </div>
+    </article>
+</template>
+
+<script>
+export default {
+    name: 'Form',
+}
+</script>
+
+<style lang="scss" scoped>
 .information {
     display: flex;
     flex-direction: row;
@@ -21,3 +38,4 @@
         }
     }
 }
+</style>
