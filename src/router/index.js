@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/password',
+    path: '/',
     name: 'password',
     component: PasswordView
   },

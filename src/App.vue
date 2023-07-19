@@ -1,9 +1,17 @@
 <template>
   <div id="app">
-      <router-link to="/password"></router-link>
-    <router-view/>
+      <router-link to="/"></router-link>
+      <router-view/>
   </div>
 </template>
 
 <style lang="scss">
+#app {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
 </style>

@@ -7,13 +7,13 @@
             </label>
             <p class="desc">Stay signed in</p>
         </div>
-        <button id="submit-button" class="btn" disabled>Continue</button>
+        <button id="submit-button" class="btn" disabled="true">Continue</button>
     </article>
 </template>
 
 <script>
 export default {
-    name: 'Form',
+    name: 'Submit',
 }
 </script>
 
