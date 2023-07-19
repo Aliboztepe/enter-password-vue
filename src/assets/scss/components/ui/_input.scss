@@ -1,0 +1,17 @@
+.input {
+    width: 100%;
+    padding: $sp-md;
+    border-radius: $r-sm;
+    border: 2px solid $catalina-blue;
+    @include font($first-font, $fs-md, $font-semibold, $catalina-blue);
+    
+    &.-password {
+        padding-left: $sp-xl;
+    }
+
+    &:focus {
+        border: 2px solid $catalina-blue;
+        outline: none;
+        box-shadow: $min-shadow;
+    }
+}

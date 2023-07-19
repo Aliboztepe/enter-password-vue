@@ -1,0 +1,16 @@
+.submit {
+    display: flex;
+    gap: $sp-md;
+    width: 377px;
+
+    &-items {
+        display: flex;
+        align-items: center;
+        gap: $sp-sm;
+        width: 100%;
+
+        .desc {
+            @include font($first-font, $fs-md, $font-semibold, $catalina-blue);
+        }
+    }
+}
