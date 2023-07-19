@@ -1,5 +1,6 @@
 <template>
     <form @submit.prevent="formSubmit" class="card">
+        <p class="title">Enter your password</p>
         <Information></Information>
         <Entry></Entry>
         <Submit></Submit>
@@ -7,8 +8,8 @@
 </template>
 
 <script>
-import Entry from '@/components/Form/Entry';
 import Information from '@/components/Form/Information';
+import Entry from '@/components/Form/Entry';
 import Submit from '@/components/Form/Submit';
 
 export default {
@@ -37,8 +38,8 @@ export default {
         z-index: -1;
         position: absolute;
         top: 0;
-        left: 25%;
-        width: 50%;
+        left: 0;
+        width: 100%;
         height: 100vh;
         opacity: 0.04;
         background-color: $catalina-blue;

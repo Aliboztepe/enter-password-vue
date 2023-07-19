@@ -3,9 +3,9 @@
         <p class="title -password">Password</p>
         <div class="entry-area">
             <img class="entry-area__icon" src="@/assets/icons/lock-icon.svg" alt="lock-icon">
-            <input id="password-input" class="input -password" type="password">
-            <img id="toggle-icon" src="@/assets/icons/eye-not-look-icon.svg" alt="toggle-icon">
-            <div class="tooltip" id="passwordTooltip">Password must contain at least 1 uppercase letter, lowercase letter,
+            <input class="input -password" :type="inputType" v-model="inputValue" @input="validatePassword" required>
+            <img :src="iconUrl" alt="toggle-icon" @click="togglePassword">
+            <div v-if="inputValue && !passwordFlag" class="tooltip">Password must contain at least 1 uppercase letter, lowercase letter,
                 number, special character. More than 8 characters.</div>
         </div>
     </article>
@@ -14,6 +14,26 @@
 <script>
 export default {
     name: 'Form',
+    data() {
+        return {
+            inputValue:"",
+            inputType: "password",
+            iconUrl: require("@/assets/icons/eye-not-look-icon.svg"),
+            passwordFlag: true,
+        }
+    },
+    methods: {
+        togglePassword() {
+            this.inputType = this.inputType === "password" ? "text" : "password";
+            this.iconUrl = this.inputType === "password"
+                ? require("@/assets/icons/eye-not-look-icon.svg")
+                : require("@/assets/icons/eye-look-icon.svg");
+        },
+        validatePassword() {
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{8,}$/;
+            this.passwordFlag = passwordPattern.test(this.inputValue);
+        }
+    }
 }
 </script>
 
@@ -24,6 +44,7 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     gap: $sp-sm;
+    margin-bottom: $sp-md;
 
     &-area {
         width: 100%;
@@ -49,7 +70,6 @@ export default {
             padding: $sp-xs;
             font-size: $fs-xs;
             color: $catalina-blue;
-            display: none;
         }
 
         #toggle-icon {
