@@ -1,3 +1,23 @@
+<template>
+    <article class="entry">
+        <p class="title -password">Password</p>
+        <div class="entry-area">
+            <img class="entry-area__icon" src="@/assets/icons/lock-icon.svg" alt="lock-icon">
+            <input id="password-input" class="input -password" type="password">
+            <img id="toggle-icon" src="@/assets/icons/eye-not-look-icon.svg" alt="toggle-icon">
+            <div class="tooltip" id="passwordTooltip">Password must contain at least 1 uppercase letter, lowercase letter,
+                number, special character. More than 8 characters.</div>
+        </div>
+    </article>
+</template>
+
+<script>
+export default {
+    name: 'Form',
+}
+</script>
+
+<style lang="scss" scoped>
 .entry {
     width: 420px;
     display: flex;
@@ -37,3 +57,4 @@
         }
     }
 }
+</style>
