@@ -2,8 +2,8 @@
     <form @submit.prevent="formSubmit" class="card">
         <p class="title">Enter your password</p>
         <Information></Information>
-        <Entry></Entry>
-        <Submit></Submit>
+        <Entry @password-validated="updateButton" ></Entry>
+        <Submit :isEnabled="isButtonEnabled" ></Submit>
     </form>
 </template>
 
@@ -18,6 +18,16 @@ export default {
         Entry,
         Information,
         Submit
+    },
+    data() {
+        return {
+            isButtonEnabled: false,
+        }
+    },
+    methods: {
+        updateButton(isEnabled) {
+            this.isButtonEnabled = isEnabled;
+        }
     }
 }
 </script>

@@ -3,7 +3,7 @@
         <p class="title -password">Password</p>
         <div class="entry-area">
             <img class="entry-area__icon" src="@/assets/icons/lock-icon.svg" alt="lock-icon">
-            <input class="input -password" :type="inputType" v-model="inputValue" @input="validatePassword" required>
+            <input class="input -password" :type="inputType" v-model="inputValue" required>
             <img :src="iconUrl" alt="toggle-icon" @click="togglePassword">
             <div v-if="inputValue && !passwordFlag" class="tooltip">Password must contain at least 1 uppercase letter, lowercase letter,
                 number, special character. More than 8 characters.</div>
@@ -12,14 +12,22 @@
 </template>
 
 <script>
+const PASSWORD_PATTERN = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{8,}$/;
+
 export default {
-    name: 'Form',
+    name: 'Entry',
     data() {
         return {
-            inputValue:"",
+            inputValue: "",
             inputType: "password",
             iconUrl: require("@/assets/icons/eye-not-look-icon.svg"),
             passwordFlag: true,
+        }
+    },
+    watch: {
+        inputValue(newValue) {
+            this.passwordFlag = PASSWORD_PATTERN.test(newValue);
+            this.$emit('password-validated', this.passwordFlag);
         }
     },
     methods: {
@@ -29,10 +37,6 @@ export default {
                 ? require("@/assets/icons/eye-not-look-icon.svg")
                 : require("@/assets/icons/eye-look-icon.svg");
         },
-        validatePassword() {
-            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{8,}$/;
-            this.passwordFlag = passwordPattern.test(this.inputValue);
-        }
     }
 }
 </script>

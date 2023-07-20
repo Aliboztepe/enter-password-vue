@@ -2,18 +2,29 @@
     <article class="submit">
         <div class="submit-items">
             <label class="switch">
-                <input class="switch-input" type="checkbox" />
+                <input class="switch-input" type="checkbox" v-model="checkboxFlag"/>
                 <span class="switch-slider -round"></span>
             </label>
             <p class="desc">Stay signed in</p>
         </div>
-        <button id="submit-button" class="btn" disabled="true">Continue</button>
+        <button id="submit-button" class="btn" disabled="!isEnabled">Continue</button>
     </article>
 </template>
 
 <script>
 export default {
     name: 'Submit',
+    props: {
+        isEnabled: {
+            type: Boolean,
+            required: true,
+        }
+    },
+    data() {
+        return {
+            checkboxFlag: false,
+        }
+    },
 }
 </script>
 
